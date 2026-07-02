@@ -44,29 +44,15 @@ const grid = buildMonthGrid(2025, 6);
 
 ## Phát triển
 
+Clone repo, cài dependency, chạy test và build:
+
 ```bash
 npm install
 npm test
 npm run build
-npm run publish:dry   # xem tarball trước khi đẩy npm
 ```
 
-## Publish lên npm
-
-Scope: **`@minhbc97`** (org npm `minhbc97`).
-
-1. `npm login` trên máy dev (tài khoản có quyền publish org `minhbc97`).
-2. Publish lần đầu (cần OTP nếu bật 2FA):
-
-```bash
-npm run build
-npm test
-npm publish --access public --otp=123456
-```
-
-3. Trên npm: package **Settings → Trusted publishing** → GitHub Actions → repo `angia-lunar/lich-an-gia-lib`, workflow `publish.yml`.
-4. Các lần sau: bump version, tag `v0.1.1`, push tag → GitHub Action publish qua OIDC (không cần `NPM_TOKEN`).
-5. Sau khi đổi `repository.url`, publish bản patch (`npm version patch`) để metadata trên npm khớp repo mới.
+Hướng dẫn publish và CI dành cho maintainer: [PUBLISHING.md](./PUBLISHING.md).
 
 ## License
 
