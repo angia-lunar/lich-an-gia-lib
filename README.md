@@ -1,6 +1,6 @@
 # @minhbc97/lunar
 
-Wrapper âm lịch Việt Nam cho [Lịch An Gia](https://github.com/buicongminh/lich-an-gia-lib).
+Wrapper âm lịch Việt Nam cho [Lịch An Gia](https://github.com/angia-lunar/lich-an-gia-lib).
 
 Bọc [`@baostudio/viet-lunar`](https://www.npmjs.com/package/@baostudio/viet-lunar) với API ổn định, type chuẩn hóa, ngày lễ và bộ test ngày mốc.
 
@@ -64,8 +64,9 @@ npm test
 npm publish --access public --otp=123456
 ```
 
-3. Trên npm: package **Settings → Trusted publishing** → GitHub Actions → repo `lich-an-gia-lib`, workflow `publish.yml`.
+3. Trên npm: package **Settings → Trusted publishing** → GitHub Actions → repo `angia-lunar/lich-an-gia-lib`, workflow `publish.yml`.
 4. Các lần sau: bump version, tag `v0.1.1`, push tag → GitHub Action publish qua OIDC (không cần `NPM_TOKEN`).
+5. Sau khi đổi `repository.url`, publish bản patch (`npm version patch`) để metadata trên npm khớp repo mới.
 
 ## License
 
