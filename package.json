@@ -1,0 +1,63 @@
+{
+  "name": "@angia/lunar",
+  "version": "0.1.0",
+  "description": "Vietnamese lunar calendar utilities — stable types, holidays, and almanac for Lịch An Gia",
+  "type": "module",
+  "license": "MIT",
+  "author": "Lịch An Gia",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buicongminh/lich-an-gia-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/buicongminh/lich-an-gia-lib/issues"
+  },
+  "homepage": "https://github.com/buicongminh/lich-an-gia-lib#readme",
+  "keywords": [
+    "lunar",
+    "vietnam",
+    "am-lich",
+    "calendar",
+    "vietnamese",
+    "lich-am",
+    "almanac"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "build": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\" && tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build && npm run test",
+    "publish:dry": "npm run build && npm publish --access public --dry-run",
+    "publish:npm": "npm run build && npm test && npm publish --access public"
+  },
+  "dependencies": {
+    "@baostudio/viet-lunar": "0.1.1"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3",
+    "vitest": "3.2.4"
+  }
+}
