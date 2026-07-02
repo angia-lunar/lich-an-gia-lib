@@ -18,17 +18,44 @@ Cấu hình một lần trên [npm package settings](https://www.npmjs.com/packa
 | Repository | `angia-lunar/lich-an-gia-lib` |
 | Workflow filename | `publish.yml` |
 
-Không cần secret `NPM_TOKEN` trên GitHub.
+Không cần secret `NPM_TOKEN` nếu Trusted Publishing đã hoạt động.
+
+**Lưu ý org GitHub:** nếu repo thuộc org `angia-lunar`, vào GitHub → **Organization settings → Third-party access** và **approve** quyền cho npm (nếu có yêu cầu chờ duyệt).
 
 ## Release qua GitHub Actions
 
 ```bash
 npm version patch   # hoặc minor / major
 git push
-git push origin v0.1.1
+git push origin v0.1.2
 ```
 
 Workflow `publish.yml` chạy khi **push tag `v*`**, không chạy khi push commit thường lên `main`.
+
+## Lỗi `404 '@minhbc97/lunar@…' is not in this registry`
+
+Thường do **GitHub Actions chưa xác thực được với npm** (không phải lỗi code).
+
+**Cách 1 — Bật Trusted Publishing (khuyên dùng):**
+
+1. npm → `@minhbc97/lunar` → **Settings → Trusted publishing**
+2. GitHub Actions → `angia-lunar/lich-an-gia-lib` + `publish.yml`
+3. Push lại tag (xóa tag cũ nếu cần):
+
+```bash
+git tag -d v0.1.1
+git push origin :refs/tags/v0.1.1
+git tag v0.1.1
+git push origin v0.1.1
+```
+
+**Cách 2 — Dự phòng bằng token (tạm thời):**
+
+1. npm → **Access Tokens** → Granular token, scope `@minhbc97`, **Read and write**, bật **Bypass 2FA**
+2. GitHub repo → **Settings → Secrets → Actions** → `NPM_TOKEN`
+3. Chạy lại workflow **Publish @minhbc97/lunar**
+
+Workflow ưu tiên OIDC; nếu OIDC không có, dùng `NPM_TOKEN`.
 
 ## Publish tay (dự phòng)
 
