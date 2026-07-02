@@ -1,6 +1,6 @@
 {
   "name": "@minhbc97/lunar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vietnamese lunar calendar utilities — stable types, holidays, and almanac for Lịch An Gia",
   "type": "module",
   "license": "MIT",
