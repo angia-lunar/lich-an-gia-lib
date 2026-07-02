@@ -1,4 +1,4 @@
-name: Publish @angia/lunar
+name: Publish @minhbc97/lunar
 
 on:
   push:
@@ -40,6 +40,4 @@ jobs:
           fi
 
       - name: Publish to npm
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
