@@ -52,8 +52,6 @@ npm test
 npm run build
 ```
 
-Hướng dẫn publish và CI dành cho maintainer: [PUBLISHING.md](./PUBLISHING.md).
-
 ## License
 
 MIT
